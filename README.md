@@ -1,7 +1,7 @@
 # `Software` Repository
-### **🎉We've reached 600 commits!!🌟**
+### **🎉We've reached 1 commit!!🌟**
 
-**REP-SET I**, *Version 6.3.0*
+**PER-TES 0**, *noisreV 0.0.0.0.0.0.0.0.0.0.0.0.0.0 DOOOO*
 
 ## PySoft:
 This is **where** I will be *storing all* of ***my and some of Okmeque1's*** Python codes and programs.

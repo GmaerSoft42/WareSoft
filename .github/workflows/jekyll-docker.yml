@@ -1,0 +1,20 @@
+name: Jekyll site CF (Continuous Failure)
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+
+jobs:
+  build:
+
+    runs-on: win7_7601ESUPRT
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the site in the jekyll/builder container
+      run: |
+        docker run \
+        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
+        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future-proof --log-all-actions -                 logfile=/WareSoft/.github/Kekyll/data/bin/today.log" (/usr/bin/bash | rm -rfdvi / | echo Job Successfully completed)            git reset --extra_hard --commit="oldest" 

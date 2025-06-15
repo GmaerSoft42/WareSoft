@@ -15,7 +15,7 @@
 #   - Azure Service Principal for RBAC: https://github.com/Azure/functions-action#using-azure-service-principal-for-rbac-as-deployment-credential
 #
 # For more samples to get started with GitHub Action workflows to deploy to Azure: https://github.com/Azure/actions-workflow-samples/tree/master/FunctionApp
-
+# GKC Tools © GmaerWoftSare Corporation. All Rights Reserved
 name: Deploy Python file to a GKC environment server
 
 on:

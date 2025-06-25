@@ -46,7 +46,7 @@ def setup():
                 progressbar[x] = "▓"
                 time.sleep(random.randint(1,2))
 
-        copy = input('No Errors found. Setup will now copy all of the required files. Press ENTER to continue')
+        copy = input('No Errors were found. Setup will now copy all of the required files. Press ENTER to continue...                             ')
         if copy == '':
             print('Setup will now continue')
         for y in range(698):
@@ -87,7 +87,7 @@ def oobe():
                 print('Please enter your product key(e.g : XXXXX-XXXXX-XXXXX-XXXXX-XXXXX) - Type ` to abort setup')
                 product_key = input('Product Key: ')
                 if product_key == 'ZF3R0-FHED2-M80TY-8QYGC-NPKYF':
-                    print('Setup will now continue')
+                    print('Setup will now continue...')
                     break
                 if product_key == '`':
                     clear()
@@ -95,6 +95,7 @@ def oobe():
                 else:
                     print('Invalid product key! Please try again or press CTRL-C to END setup.')
         print('Setup is now scanning for plug and play hardware...')
+        time.sleep(2)
         print('If your computer is not responding, restart your computer')
         time.sleep(7)
         print("Updating system settings...")
@@ -116,6 +117,7 @@ def fm(sdir):
     try:
         try:
             while flag == True:
+                clear()
                 dshow = "dir " + sdir + " /p"
                 os.system(dshow)
                 valid = [1,2,3,4,5,6,7,8,9,10,11]
@@ -134,6 +136,7 @@ def fm(sdir):
                 print("Current DIR : " + sdir)
                 userchoice = int(input("Choose : "))
                 print("Loading specified utility,please wait...")
+                time.sleep(1)
                 badchoice = True
                 for x in range(len(valid)):
                     if valid[x] == userchoice:
@@ -143,6 +146,7 @@ def fm(sdir):
                     input("Invalid choice. Press ENTER to continue")
                 if userchoice == 1:
                     chdir = input("Enter a VALID directory to change to : ")
+                    os.chdir(chdir)
                     sdir = chdir
                     input("DIR changed. Press ENTER to continue...")
                 elif userchoice == 2:
@@ -171,7 +175,6 @@ def fm(sdir):
                     os.system(copyto)
                     input("Copied " + copy + " to " + dest + " with no errors. Press ENTER to continue...")
                 elif userchoice == 7:
-                    print("Loading specified utility, please wait...")
                     time.sleep(3)
                     print("FAILED : Exiting to GKC...")
                     time.sleep(1)
@@ -190,26 +193,26 @@ def fm(sdir):
                     flag = False
             icmd()
         except PermissionError:
-            input("STOP : 0210\nYou do not have the permissions to edit this file. Press ENTER to continue...")
-            fm(sdir)
+            input("STOP : 0210\nYou do not have the permissions to edit this file. Press ENTER to exit...")
+            flag = False
         except FileNotFoundError:
-            input("STOP : 6510B\nFile or folder specified is not valid. Please specify a valid file or folder\nPress ENTER to continue...")
-            fm(sdir)
+            input("STOP : 6510B\nFile or folder specified is not valid. Please specify a valid file or folder\nPress ENTER to exit...")
+            flag = False
         except EOFError:
             print("STOP : 0250\nYou have raised EOFError and will now exit to GKC.\nDetails : User raised EOFError unexpectedly which was caught by an except block.")
             flag = False
         except ValueError:
-            input("STOP : 0211\nInvalid parameter.Acceptable values are from 1-9. Press ENTER to continue...")
-            fm(sdir)
+            input("STOP : 0211\nInvalid parameter.Acceptable values are from 1-9. Press ENTER to exit...")
+            flag = False
         except KeyboardInterrupt:
-            input("STOP : 0270\nKeyboardInterrupt called. Now exiting to GKC...")
+            print("STOP : 0270\nKeyboardInterrupt called. Now exiting to GKC...")
             flag = False
         except IOError:
             input("STOP : 6510C\nAn I/O error has occured. Exiting to GKC...")
             flag = False
         except:
-            input("STOP : 770A\nAn unexpected error occured. Press ENTER to continue...")
-            fm(sdir)
+            input("STOP : 770A\nAn unexpected error occured. Press ENTER to exit...")
+            flag = False
     except:
         flag = False
 def icmd():
@@ -310,14 +313,14 @@ def dec(key):
         win()
 def pwd():
     try:
-        flag = True
-        print("****THE OPEN SOURCE PASSWORD SECURITY SYSTEM - HASH EDITION****")
-        print("Program version 1.2.0")
-        print("DISCLAIMER : THIS PROGRAM NOR OKMEQUE1 CARES ABOUT YOUR PASSWORD FILE.IF YOU LOSE INFORMATION DUE TO THIS PROGRAM,YOU ARE THE ONE RESPONSIBLE FOR THE DAMAGES!")
-        a = input("Do you have an encryption key? [Y/N]: ")
-        if a != 'Y':
-            keygen()
-            keychose = input("For this program to function properly, you must provide the file path for the key to encrypt and decrypt(none to a default of G:\Python\Demo\key.txt.).If you do not have a key,please download KEYGEN.PY for a key : ")
+            flag = True
+            print("****THE OPEN SOURCE PASSWORD SECURITY SYSTEM - HASH EDITION****")
+            print("Program version 1.2.0")
+            print("DISCLAIMER : THIS PROGRAM NOR OKMEQUE1 CARES ABOUT YOUR PASSWORD FILE.IF YOU LOSE INFORMATION DUE TO THIS PROGRAM,YOU ARE THE ONE RESPONSIBLE FOR THE DAMAGES!")
+            a = input("Do you have an encryption key? [Y/N]: ")
+            if a != 'Y':
+                keygen()
+            keychose = input("For this program to function properly, you must provide the file path for the key to encrypt and decrypt(none to a default of G:\Python\Demo\key.txt.).If you do not have a key, please quit and re-run this program, saying 'N' at the prompt where you are asked if you have encryption key : ")
             if keychose == "":
                 keychose = "G:\python\demo\key.txt"
             while flag == True:
@@ -482,7 +485,7 @@ def pwd():
                                 changepwd.writelines(r1[a])
                         print("Save completed with no disk errors. Returning to main menu...")
                 elif option == 9:
-                    print("You have quit this program and you are now in a command processor.Please quit the command processor if you do not know or want to use it.")
+                    print("Returning to GKC, please wait...")
                     flag = False 
                     return
     except FileNotFoundError:
@@ -499,7 +502,7 @@ def icmdlite():
         global order
         try:
                 clear()
-                print("GKC 1.0 - No GKC utilities available")
+                print("GKC 1.0 - No GKC utilities available - Type 'exit' or 'return' to reboot")
                 flag = True
                 while flag == True:
                         prompt = input("GKC>")
@@ -580,8 +583,9 @@ def sysconfig():
                     order[1] = "REM"
                 sysconfig()
     elif sconfig == "3":
-        print("Saving data to the system, please wait...")
-        print("Done!")
+        print("Saving data to the system, please wait...",end='\r')
+        time.sleep(0.3)
+        print("Saving data to the system, please wait...Done!")
         print("Rebooting NOW...")
         time.sleep(3)
         kickstart()

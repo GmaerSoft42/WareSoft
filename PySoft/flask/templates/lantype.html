@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="static/styles/styles.css">
+    <title>LanType Typing Website</title>
+</head>
+<body>
+    <h1>LanType Typing Website</h1>
+    <p>Type as many words as you can in 60 seconds - © Lan Internet Software</p>
+    <div class="inputfield">Type words: <input placeholder="", id="words"> <br></div>
+    <p id="output"></p>
+    <a href="/"><button onclick="getwords()"> Get Words </button> <br> </a>
+    <script>
+        function getwords(){
+                        fetch('/get-words')
+                            .then(response => response.json())
+                            .then(data => {
+                                document.getElementById('output').innerText = "data.message";
+                            });
+                
+                        }
+    </script>
+    <script>
+    document.getElementById("words").addEventListener("input", function(e) {
+    fetch("/keystroke", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ key: e.target.value })
+    });
+});
+    </script>
+</body>
+</html>

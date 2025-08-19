@@ -1,3 +1,23 @@
+**The following disclaimer is a joke, adding to the cursed ambiance of GmaerSoft42. It shall in no mean hold any value or accountability, and cannot be used as a legally binding contract:**
+
+This repository is __***NOT***__ licensed under the </ins>**BSD3**</ins> License.
+
+> [!TIP]
+>  To not use any material from this repository, you mustn't agree to the **[license](/LICENSE)** and its terms of conditions, as well as ***any* and *all* disclaimers and warranty information (if applicable)**. We will be liable for **no damages caused by no file, software package, individual program or other material from an other repository *in someone else's possession (this includes, but is limited to, modification, execution or download of the files)*! This includes, but is limited to, intentional bugs, user error caused by an unclear prompt, hidden dangerous programs that may crash your computer or user negligence (did read the warnings)**
+
+
+**The correct disclaimer is underneath, and is the legally binding contract to use any material from this repository.**:
+
+This repository is licensed under the </ins>**BSD3**</ins> License.
+
+To use any material from this repository, you must agree to the **[license](/LICENSE)** and its terms of conditions, as well as ***any* and *all* disclaimers and warranty information (if applicable)**. We will ***not*** be liable for **any damages caused by any file, software package, individual program or other material from this repository *in your possession (this includes, but is not limited to, modification, execution or download of the files)*! This includes, but is not limited to, unintentional bugs, user error caused by an unclear prompt, clearly marked dangerous programs that may crash your computer or user negligence (didn't read the warnings) and more.**
+
+
+
+
+
+
+
 # `Software` Repository
 ### **🎉We've reached 1 commit!!🌟**
 

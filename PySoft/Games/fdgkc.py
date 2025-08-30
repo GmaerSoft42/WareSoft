@@ -861,7 +861,7 @@ def kickstart():
     try:
         clear() 
         print('===============================================')
-        print('Intel ARC B580 BIOS N34.EP.08')
+        print('Intel ARC A750 BIOS N34.EP.08')
         print('Version 4.34.20.87.0P')
         print('Copyright (C) 1996-2003 Intel Corp')
         print('12880MB RAM')

@@ -1,3 +1,5 @@
+[![A/A-- CI/CD](https://github.com/GmaerSoft42/WareSoft/actions/workflows/a-a--.yml/badge.svg)](https://github.com/GmaerSoft42/WareSoft/actions/workflows/a-a--.yml)
+
 **The following disclaimer is a joke, adding to the cursed ambiance of GmaerSoft42. It shall in no mean hold any value or accountability, and cannot be used as a legally binding contract:**
 
 This repository is __***NOT***__ licensed under the </ins>**BSD3**</ins> License.

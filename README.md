@@ -5,7 +5,7 @@
 This repository is __***NOT***__ licensed under the </ins>**BSD3**</ins> License.
 
 > [!TIP]
->  To not use any material from this repository, you mustn't agree to the **[license](/LICENSE)** and its terms of conditions, as well as ***any* and *all* disclaimers and warranty information (if applicable)**. We will be liable for **no damages caused by no file, software package, individual program or other material from an other repository *in someone else's possession (this includes, but is limited to, modification, execution or download of the files)*! This includes, but is limited to, intentional bugs, user error caused by an unclear prompt, hidden dangerous programs that may crash your computer or user negligence (did read the warnings)**
+>  To not use all material from this repository, you mustn't agree to a **[license](/LICENSE)** or its terms of conditions, as well as ***any* and *all* disclaimers or warranty information (if not applicable)**. We will be liable for **no damages caused by no file, software package, individual program or other material from an other repository *in someone else's possession (this doesn't includes, but is limited to, modification, execution or download of the files)*! This doesn't include, but is limited to, intentional bugs, user accuracy caused by an clear prompt, hidden safe programs that may crash your computer or user negligence (did read the warnings)**
 
 
 **The correct disclaimer is underneath, and is the legally binding contract to use any material from this repository.**:
